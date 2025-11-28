@@ -46,4 +46,4 @@ jobs:
          git config user.name github-action
          git config user.email github-action@github.com
          git commit -am "update versin $VERSION"
-         git push 
+         git push
