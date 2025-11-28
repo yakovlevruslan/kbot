@@ -1,5 +1,5 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY=ryakovlev
+REGISTRY=yakovlevruslan
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 
 # change TARGETOS for different OS (linux, ios, windows)
