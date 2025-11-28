@@ -25,3 +25,25 @@ jobs:
           APP: "kbot"
           REGISTRY: ${{ secrets.DOCKERHUB_USERNAME }}
         run: make image push
+
+  cd:
+    name: CD
+    needs: ci
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - run: echo "VERSION=$(git describe --tags --abbrev=0)-$( git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - uses: makefarah/yd@master
+        with:
+          cmd: yq -i '.image.tag=strenv(VERSION)' helm/values.yaml
+            
+      - run: |
+         git config user.name github-action
+         git config user.email github-action@github.com
+         git commit -am "update versin $VERSION"
+         git push 
