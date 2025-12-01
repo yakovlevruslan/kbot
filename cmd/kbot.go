@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	// T_Token_bot
+	// TELE_Token_bot
 	TELE_Token = os.Getenv("TELE_TOKEN")
 )
 
