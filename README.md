@@ -4,4 +4,4 @@ Start the bot:
 ./kbot start
 
 Available Commands
-/start hello
+Щоб дізнатись погоду, відправ /w [місто]. Наприклад: /w Kyiv
